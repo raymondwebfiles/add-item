@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <style>
+       span{
+        position: relative;
+        top: 0;
+        left: 2vh;
+        height: 3hv;
+        width: 3px;
+        background-color: red;
+        text-align: center;
+        cursor: pointer;
+       }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="text" id="txt1">
+        <!-- <input type="text" id="txt2"> -->
+        <button id="addBtn">Add</button>
+    </form>
+    <table class="container" border="1" style="border-collapse: collapse;" >
+        <thead>
+            <tr>
+                <th>FirstName</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr>
+                <td>Hello<span>x</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        let inpFName =  document.querySelector('#txt1')
+        //let inpLName =  document.querySelector('#txt2')
+        let list = document.querySelector('.container tbody')
+        let addBtn = document.querySelector('#addBtn')
+
+        addBtn.addEventListener('click', (e)=>{
+            if(inpFName.value !=""){
+                e.preventDefault()
+
+                //Process to Input Firstname
+                let myList1 = document.createElement('tr')
+                myList1.innerHTML = inpFName.value
+                list.appendChild(myList1)
+
+                const mySpan = document.createElement('span')
+                mySpan.innerHTML = 'x'
+                myList1.appendChild(mySpan)
+
+                //Process to Input Last name
+                // let myList2 = document.createElement('td')
+                // myList2.innerHTML = inpLName.value
+                // list.appendChild(myList2)
+            }
+            const close = document.querySelectorAll('span')
+            for(let i=0; i<close.length; i++){
+                close[i].addEventListener('click', ()=>{
+                    close[i].parentElement.style.display = "none"
+                })
+            }
+            //inpFName.value
+        })
+    </script>
+</body>
+</html>
